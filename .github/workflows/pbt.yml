@@ -3,8 +3,8 @@ name: Test CI
 on: [push]
 
 env:
-  DATABRICKS_HOST=https://dbc-147abc45-b6c7.cloud.databricks.com
-  DATABRICKS_TOKEN=dapia756ad5e7ea2698af48c80e1eb1e6563
+  DATABRICKS_HOST: "https://dbc-147abc45-b6c7.cloud.databricks.com"
+  DATABRICKS_TOKEN: "dapia756ad5e7ea2698af48c80e1eb1e6563"
 
 jobs:
   build:
@@ -25,5 +25,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install build pytest wheel prophecy-build-tool-test pytest-html wheel pyspark prophecy-libs
+      - name: Install dependencies in setup.py
+        run: pip install .
       - name: Run PBT
         run: pbt build --path .
