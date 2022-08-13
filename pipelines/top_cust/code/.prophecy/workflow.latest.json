@@ -1,0 +1,149 @@
+{
+  "metainfo" : {
+    "id" : "1",
+    "language" : "scala",
+    "fabricId" : "847",
+    "frontEndLanguage" : "sql",
+    "mode" : "batch",
+    "udfs" : {
+      "language" : "scala",
+      "udfs" : [ ]
+    },
+    "udafs" : {
+      "language" : "scala",
+      "code" : "package udfs\n\nimport org.apache.spark.sql.expressions._\nimport org.apache.spark.sql.types._\nimport org.apache.spark.sql._\n\n/**\n  * Here you can define your custom aggregate functions.\n  *\n  * Make sure to register your `udafs` in the register_udafs function below.\n  *\n  * Example:\n  *\n  * object GeometricMean extends UserDefinedAggregateFunction {\n  *   // This is the input fields for your aggregate function.\n  *   override def inputSchema: org.apache.spark.sql.types.StructType =\n  *     StructType(StructField(\"value\", DoubleType) :: Nil)\n  *\n  *   // This is the internal fields you keep for computing your aggregate.\n  *   override def bufferSchema: StructType = StructType(\n  *     StructField(\"count\", LongType) ::\n  *     StructField(\"product\", DoubleType) :: Nil\n  *   )\n  *\n  *   // This is the output type of your aggregatation function.\n  *   override def dataType: DataType = DoubleType\n  *\n  *   override def deterministic: Boolean = true\n  *\n  *   // This is the initial value for your buffer schema.\n  *   override def initialize(buffer: MutableAggregationBuffer): Unit = {\n  *     buffer(0) = 0L\n  *     buffer(1) = 1.0\n  *   }\n  *\n  *   // This is how to update your buffer schema given an input.\n  *   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {\n  *     buffer(0) = buffer.getAs[Long](0) + 1\n  *     buffer(1) = buffer.getAs[Double](1) * input.getAs[Double](0)\n  *   }\n  *\n  *   // This is how to merge two objects with the bufferSchema type.\n  *   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {\n  *     buffer1(0) = buffer1.getAs[Long](0) + buffer2.getAs[Long](0)\n  *     buffer1(1) = buffer1.getAs[Double](1) * buffer2.getAs[Double](1)\n  *   }\n  *\n  *   // This is where you output the final value, given the final value of your bufferSchema.\n  *   override def evaluate(buffer: Row): Any = {\n  *     math.pow(buffer.getDouble(1), 1.toDouble / buffer.getLong(0))\n  *   }\n  * }\n  *\n  */\n\n\nobject UDAFs {\n  /**\n    * Registers UDAFs with Spark SQL\n    */\n  def registerUDAFs(spark: SparkSession): Unit = {\n    /**\n      * Example:\n      *\n      * spark.udf.register(\"gm\", GeometricMean)\n      *\n      */\n\n\n  }\n}\n"
+    },
+    "configuration" : {
+      "common" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "fabrics" : {
+        "dev" : {
+          "type" : "record",
+          "fields" : [ ]
+        }
+      }
+    },
+    "sparkConf" : [ ],
+    "hadoopConf" : [ ],
+    "codeMode" : "sparse",
+    "buildSystem" : "maven",
+    "externalDependencies" : [ ],
+    "isImported" : false,
+    "interimMode" : "Full",
+    "interimModeEnabled" : true,
+    "visualCodeInterimMode" : "Disabled",
+    "recordsLimit" : {
+      "enabled" : false,
+      "value" : 1000
+    },
+    "topLevelPackage" : "io.prophecy.pipelines.topcust"
+  },
+  "connections" : [ {
+    "id" : "RrbHQARpTL4b3zplFTqzS",
+    "source" : "dAV2Z54u8OcYYI777oTf3$$OWfTaNX_tVoD0w371jGa0",
+    "sourcePort" : "Upfztjc4DDFQXqsrmOMCN$$dQ71vjidu_NtGd8_T_hHv",
+    "target" : "jPmVOpsozb1TyJSVSJbho$$Bns2_gCT3Rbnxw3zjadjv",
+    "targetPort" : "AT87h1T3uGL8_E-S2oLRP$$owKv1WfOhIsRbILlwzS8v"
+  }, {
+    "id" : "Jg5gtn0LQffmAxVRp3iNt",
+    "source" : "jPmVOpsozb1TyJSVSJbho$$Bns2_gCT3Rbnxw3zjadjv",
+    "sourcePort" : "TWwCaWwnnizHkJBixF3lf$$q6brgHcmzEmpa4C2Gn-Uu",
+    "target" : "wnnWAHnDinbyGg5wBtQiI$$OwNcSpd3splal8I1u5Uow",
+    "targetPort" : "FdDfBzHl0HWgNQakaWWwK$$uXAvp-rGg62HMbMALewe8"
+  } ],
+  "processes" : {
+    "wnnWAHnDinbyGg5wBtQiI$$OwNcSpd3splal8I1u5Uow" : {
+      "id" : "wnnWAHnDinbyGg5wBtQiI$$OwNcSpd3splal8I1u5Uow",
+      "component" : "Target",
+      "metadata" : {
+        "label" : "report_output",
+        "slug" : "report_output",
+        "x" : 420,
+        "y" : 160,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "FdDfBzHl0HWgNQakaWWwK$$uXAvp-rGg62HMbMALewe8",
+          "slug" : "in"
+        } ],
+        "outputs" : [ ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "datasetId" : "2735/datasets/report_output"
+      }
+    },
+    "jPmVOpsozb1TyJSVSJbho$$Bns2_gCT3Rbnxw3zjadjv" : {
+      "id" : "jPmVOpsozb1TyJSVSJbho$$Bns2_gCT3Rbnxw3zjadjv",
+      "component" : "Filter",
+      "metadata" : {
+        "label" : "Filter_1",
+        "slug" : "Filter_1",
+        "x" : 280.20000000000016,
+        "y" : 13.600000000000023,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "AT87h1T3uGL8_E-S2oLRP$$owKv1WfOhIsRbILlwzS8v",
+          "slug" : "in"
+        } ],
+        "outputs" : [ {
+          "id" : "TWwCaWwnnizHkJBixF3lf$$q6brgHcmzEmpa4C2Gn-Uu",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "condition" : {
+          "format" : "sql",
+          "expression" : "true"
+        }
+      }
+    },
+    "dAV2Z54u8OcYYI777oTf3$$OWfTaNX_tVoD0w371jGa0" : {
+      "id" : "dAV2Z54u8OcYYI777oTf3$$OWfTaNX_tVoD0w371jGa0",
+      "component" : "Source",
+      "metadata" : {
+        "label" : "customers_orders",
+        "slug" : "customers_orders",
+        "x" : 140,
+        "y" : 160,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "Upfztjc4DDFQXqsrmOMCN$$dQ71vjidu_NtGd8_T_hHv",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "datasetId" : "2735/datasets/customers_orders"
+      }
+    }
+  },
+  "ports" : {
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "selectedInputFields" : [ ],
+    "isCustomOutputSchema" : false
+  }
+}

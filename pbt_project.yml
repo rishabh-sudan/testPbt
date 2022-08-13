@@ -1,0 +1,73 @@
+name: scala
+description: ''
+version: 0.0.1
+author: kiran+testpbt@prophecy.io
+language: scala
+buildSystem: maven
+pipelines:
+  pipelines/top_cust:
+    name: top_cust
+    description: ''
+    author: kiran+testpbt@prophecy.io
+    mode: batch
+    language: scala
+    createdAt: '2022-08-10 10:04:32'
+    datasets:
+      inputs:
+      - 2735/datasets/customers_orders
+      outputs:
+      - 2735/datasets/report_output
+    dependencies: {}
+datasets:
+  datasets/customers_orders:
+    name: customers_orders
+    description: ''
+    author: kiran+testpbt@prophecy.io
+    createdAt: '2022-08-10 10:06:21'
+    physicalDatasets:
+      dev:
+        fabricId: 847
+        datasetType: File
+        description: ''
+        author: kiran+testpbt@prophecy.io
+        createdAt: '2022-08-10 10:06:21'
+  datasets/report_output:
+    name: report_output
+    description: ''
+    author: kiran+testpbt@prophecy.io
+    createdAt: '2022-08-10 10:32:36'
+    physicalDatasets:
+      dev:
+        fabricId: 847
+        datasetType: File
+        description: ''
+        author: kiran+testpbt@prophecy.io
+        createdAt: '2022-08-10 10:32:36'
+templates: {}
+jobs:
+  jobs/job:
+    name: job
+    description: ''
+    fabricUID: 847
+    scheduler:
+      Databricks: {}
+    jobSize: Small
+    scheduleCron: 0 0 0 1/1 * ? *
+    timeout: null
+    alerting:
+      emails: ''
+      onStart: false
+      onSuccess: false
+      onFailure: false
+    pipelines:
+    - 2735/pipelines/top_cust
+    jobClusterMode:
+      clusterMode:
+        Multi: {}
+      clusterId: null
+    enabled: null
+    createdAt: '2022-08-10 10:35:02'
+    author: kiran+testpbt@prophecy.io
+libraries: []
+subgraphs: {}
+dependencies: '[]'

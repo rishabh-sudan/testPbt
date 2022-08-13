@@ -1,0 +1,36 @@
+{
+  "unitTests" : [ {
+    "data" : {
+      "AT87h1T3uGL8_E-S2oLRP$$owKv1WfOhIsRbILlwzS8v" : {
+        "values" : [ [ "0" ] ],
+        "schema" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "customer_id",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "predicates" : [ ]
+      },
+      "TWwCaWwnnizHkJBixF3lf$$q6brgHcmzEmpa4C2Gn-Uu" : {
+        "values" : [ [ "0" ] ],
+        "schema" : {
+          "type" : "struct",
+          "fields" : [ {
+            "name" : "customer_id",
+            "type" : "string",
+            "nullable" : true,
+            "metadata" : { }
+          } ]
+        },
+        "predicates" : [ ]
+      }
+    },
+    "name" : "Unit Test 0",
+    "testType" : "outputRow",
+    "language" : "scala"
+  } ],
+  "language" : "scala"
+}
